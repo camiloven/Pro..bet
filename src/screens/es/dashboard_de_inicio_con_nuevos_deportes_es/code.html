@@ -1,1 +1,442 @@
+<!DOCTYPE html>
 
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRO-BET | Análisis Deportivo Profesional</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .neon-glow-primary {
+            box-shadow: 0px 0px 12px rgba(56, 189, 248, 0.3);
+        }
+        .pulse-live {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        ::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3e484f;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "on-tertiary-fixed": "#2a1700",
+                        "background": "#0b1326",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#001e2c",
+                        "on-surface-variant": "#bdc8d1",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary": "#472a00",
+                        "outline-variant": "#3e484f",
+                        "surface": "#0b1326",
+                        "primary-container": "#38bdf8",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "primary": "#8ed5ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-container": "#004965",
+                        "outline": "#87929a",
+                        "secondary": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#f59e0b",
+                        "primary-fixed": "#c4e7ff",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary": "#ffc174",
+                        "inverse-primary": "#00668a",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-background": "#dae2fd",
+                        "on-primary": "#00354a",
+                        "on-surface": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-container": "#00311f",
+                        "on-primary-fixed-variant": "#004c69",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#613b00",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#7bd0ff",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-dim": "#0b1326",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-secondary": "#003824",
+                        "on-error": "#690005",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-container": "#00a572"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container/30">
+<!-- TopAppBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low w-full top-0 sticky z-50 border-b border-outline-variant dark:border-outline-variant shadow-sm flex justify-between items-center px-margin-mobile py-sm w-full h-16">
+<div class="flex items-center gap-3">
+<img alt="Perfil de Usuario" class="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A professional close-up portrait of a tech-savvy male user with a friendly expression. The background is a blurred high-tech office environment with soft neon blue and deep charcoal tones. The lighting is cinematic, highlighting the clean contours of his face, matching a premium dark-mode sports application aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT2GAeIlSyiMDvxY5SoKMhc-X6FVpK8x8ST3DAVrE20JPV8Yw0Js1v9fyHBlD09fSBHto84RzwRGCjYuNTQlshTFa-gCaJZysmaqAf9FPC41g1WTKRyHSEwFCYLDn6-d2HGLzsh9zSx1obwyN-G7Vv_uB9bAovuns8QPaWvniyLry_AjXn3x5TMcyZQL_vheY5Ct-szyIL-E1MTeQOJbihve0Udoh6V2Y274PIoxHa3thotwUaRQ3FsjqJCB5qMSTB2Y2SwHhG0pet"/>
+<h1 class="font-headline-md text-headline-md font-extrabold tracking-tighter text-primary dark:text-primary">PRO-BET</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/50 transition-colors p-2 rounded-full active:scale-95 duration-150" data-icon="search">search</button>
+<a class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all p-2 rounded-full active:scale-95 duration-150 cursor-pointer no-underline" href="{{DATA:SCREEN:SCREEN_11}}">notifications</a>
+</div>
+</header>
+<main class="pb-24 lg:pb-0 lg:pl-80">
+<!-- Sidebar for Desktop -->
+<aside class="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-80 bg-surface-container-high dark:bg-surface-container-high border-r border-outline-variant shadow-xl flex-col gap-2 p-4">
+<div class="p-4 mb-4 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Usuario Premium</p>
+<p class="text-sm text-on-surface-variant">Análisis Pro Activo</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="bg-primary-container text-on-primary-container font-bold rounded-r-full flex items-center gap-4 px-4 py-3 cursor-pointer transition-all duration-200" href="{{DATA:SCREEN:SCREEN_13}}">
+<span class="material-symbols-outlined">sports_soccer</span> Lobby de Deportes
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-r-full cursor-pointer transition-all duration-200" href="{{DATA:SCREEN:SCREEN_17}}">
+<span class="material-symbols-outlined">live_tv</span> Mercados en Vivo
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-r-full cursor-pointer transition-all duration-200" href="{{DATA:SCREEN:SCREEN_8}}">
+<span class="material-symbols-outlined">receipt_long</span> Mis Apuestas
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-r-full cursor-pointer transition-all duration-200" href="#">
+<span class="material-symbols-outlined">verified</span> Picks de Expertos
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-r-full cursor-pointer transition-all duration-200" href="{{DATA:SCREEN:SCREEN_23}}">
+<span class="material-symbols-outlined">settings</span> Configuración
+                </a>
+</nav>
+<div class="mt-auto p-4 text-xs text-on-surface-variant opacity-50">v2.4.0</div>
+</aside>
+<!-- Main Content Canvas -->
+<div class="px-margin-mobile lg:px-margin-desktop py-lg space-y-8 max-w-7xl mx-auto">
+<!-- Search & Filter Bar -->
+<section class="relative">
+<div class="flex items-center bg-surface-variant rounded-xl px-4 py-3 border border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full placeholder:text-outline text-body-md" placeholder="Buscar deportes, equipos o ligas..." type="text"/>
+</div>
+</section>
+<!-- Sports Categories -->
+<section>
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Mercados Deportivos</h2>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<button class="flex flex-col items-center gap-2 min-w-[80px] group">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">sports_soccer</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Fútbol</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[80px] group">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-3xl">sports_basketball</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">NBA</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[80px] group">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-3xl">sports_tennis</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Tenis</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[80px] group">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-3xl">sports_esports</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Esports</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[80px] group">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-3xl">sports_mma</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">UFC</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[80px] group">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-3xl">more_horiz</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Todo</span>
+</button>
+<button class="flex flex-col items-center gap-2 min-w-[80px] group"><div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-3xl">sports_motorsports</span></div><span class="font-label-md text-label-md text-on-surface-variant">Fútbol Americano</span></button><button class="flex flex-col items-center gap-2 min-w-[80px] group"><div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-3xl">sports_hockey</span></div><span class="font-label-md text-label-md text-on-surface-variant">Hockey</span></button><button class="flex flex-col items-center gap-2 min-w-[80px] group"><div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-3xl">sports_baseball</span></div><span class="font-label-md text-label-md text-on-surface-variant">Béisbol</span></button></div>
+</section>
+<!-- Featured Matches Carousel -->
+<section>
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Destacados en Vivo</h2>
+<span class="flex items-center gap-1 text-secondary text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary pulse-live"></span> 12 Partidos
+                    </span>
+</div>
+<div class="flex gap-md overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
+<!-- Match Card 1 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center glass-card rounded-xl p-md flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">PREMIER LEAGUE</span>
+<span class="text-secondary font-data-mono text-sm">VIVO 64'</span>
+</div>
+<div class="flex justify-around items-center py-2">
+<div class="flex flex-col items-center gap-2">
+<img alt="Arsenal" class="w-16 h-16 object-contain" data-alt="A high-contrast, minimalist logo of Arsenal football club presented on a dark, sleek glass background. The logo maintains its classic red and white shield colors but is refined with a subtle digital glow effect. The atmosphere is professional, cinematic, and aligned with a premium sports analytics platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzQfbMcwJxCG3Egp-wFkfcdMEtz4FXCGnpkHZdk8ab8pl3Ura4xpxwSO_of2giNQLI4eXMVFug0MXVEr4gJy0Nd2A_0_xFIdkLD5I-gzZ6HNgq2g46yhMajPX0oE80NTcPo8ZgRHclLxDhgVvPgu-K3OtleJeWZGLt4xoBi5yvNvt1Y8cGazFDfWUQEL_yGW3aFBW82QpIs_gPlPTEUhEB7WVMATaYbosJJ3foSWmtjYOZrTGn4MJ_eisla4rcmKQPcaNCD70n66ZA"/>
+<span class="font-bold text-on-surface">Arsenal</span>
+</div>
+<div class="text-center">
+<span class="font-display-lg text-4xl font-extrabold text-on-surface">2 - 1</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<img alt="Liverpool" class="w-16 h-16 object-contain" data-alt="A sleek, professional rendition of the Liverpool FC logo with vibrant red colors, positioned against a charcoal-grey glass surface. The image features high-end lighting with subtle lens flares, evoking a high-stakes, live-match broadcast aesthetic for a sophisticated dark-mode UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJz27BSaW3KrHO_KD7piXxEw4UeOZOvkd_DJKE6vlNgZuKf-IBZLV7L6ijEK1usnOsWi6-aRFymz-v3wjCSFONGceYCuuBXRdWOPngw4XSAZ2t30js_xR8HjRUhdSle3UFr62Pb8dix6Ynv7DYwJFf4jHuULMKyEmXy3AzImoV5olNKaWAX-ZvrdtfCy8obzx8O7WUmHv2krJiHOIhmitO4VuMNZGwH2jJcREWD6o4ysNu2yQTL_Np-i3UzvHQk96MgG3AXme6QTlx"/>
+<span class="font-bold text-on-surface">Liverpool</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="bg-surface-container rounded px-3 py-2 flex flex-col items-center hover:bg-primary/20 transition-all border border-outline-variant">
+<span class="text-xs text-outline">Arsenal</span>
+<span class="text-primary font-bold">1.85</span>
+</button>
+<button class="bg-surface-container rounded px-3 py-2 flex flex-col items-center hover:bg-primary/20 transition-all border border-outline-variant">
+<span class="text-xs text-outline">Empate</span>
+<span class="text-primary font-bold">3.40</span>
+</button>
+<button class="bg-surface-container rounded px-3 py-2 flex flex-col items-center hover:bg-primary/20 transition-all border border-outline-variant">
+<span class="text-xs text-outline">Liverpool</span>
+<span class="text-primary font-bold">4.20</span>
+</button>
+</div>
+</div>
+<!-- Match Card 2 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center glass-card rounded-xl p-md flex flex-col gap-4 opacity-80">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">LALIGA</span>
+<span class="text-on-surface-variant font-data-mono text-sm">INICIO 20:00</span>
+</div>
+<div class="flex justify-around items-center py-2">
+<div class="flex flex-col items-center gap-2">
+<img alt="Real Madrid" class="w-16 h-16 object-contain" data-alt="The Real Madrid football club logo presented with a premium metallic finish. It rests on a textured dark slate background with neon-blue edge lighting. The visual style is modern, sharp, and luxurious, fitting for a top-tier sports betting application in dark mode." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtuWN3TFiUpM-WiSO7gdgST_MzahKuBMtVN4rTrxP6dqLlU96QIk0fwQeo5DqwnDT3qw5jcZTqJXbVeY2T5-3l6fF2_CAM4ZhLDhQa1tK-G6lNt24tCPT-Ei2p0THT5S4-z3nTwiQQ94U4Eft9iYNVRPTRC2qnW4mm9kGMrIx_HR4fQ4njw9L1P97L8Mdzc_g-tEcKpZrEvjSmGw8NrxIDL3LI6PEjUPbBr2Ap7WMEK8ncRliwhqDQrkUSDB0lbbmsaSGN_0-TzA8i"/>
+<span class="font-bold text-on-surface">R. Madrid</span>
+</div>
+<div class="text-center">
+<span class="font-display-lg text-4xl font-extrabold text-on-surface opacity-30">VS</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<img alt="Barcelona" class="w-16 h-16 object-contain" data-alt="A digital-native representation of the FC Barcelona logo with deep blue and garnet tones. The logo is sharply defined against a dark, translucent glass backdrop with atmospheric highlights that emphasize its iconic shape. Designed for a high-performance sports analytics dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn7gBans0Yx0CKlEv6Vu-_1wNwiklFlbTToebZ4MyiAtvQ6aJlw7eFFJ_0KbodNvZdkGCxlB7RL7deNY7qvcYvuTgCQij4-Jv7-3a14QV27FJM4NjGtz-IcLIO6q2c-_0SuxxXYDzDIViOzmjHJ3Q0ADuPLQsKHeTb75wgJFqcFr2PLxHTjRlCy1PwE2MAOmEORFWI40FNIOlEtaZ14J307pJb9Y6DUkxXT-JUz_kT1Cod7EQcdDGClWyotkoq20RUsjrnnvey2N27"/>
+<span class="font-bold text-on-surface">Barcelona</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="bg-surface-container rounded px-3 py-2 flex flex-col items-center border border-outline-variant">
+<span class="text-xs text-outline">1</span>
+<span class="text-primary font-bold">2.10</span>
+</button>
+<button class="bg-surface-container rounded px-3 py-2 flex flex-col items-center border border-outline-variant">
+<span class="text-xs text-outline">X</span>
+<span class="text-primary font-bold">3.15</span>
+</button>
+<button class="bg-surface-container rounded px-3 py-2 flex flex-col items-center border border-outline-variant">
+<span class="text-xs text-outline">2</span>
+<span class="text-primary font-bold">2.95</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Predictions (Bento Grid Style) -->
+<section>
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Predicciones Top</h2>
+<button class="text-primary text-label-md flex items-center">Ver Todo <span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Prediction 1 -->
+<div class="bg-surface-container-high rounded-xl p-md border border-outline-variant flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<span class="font-bold text-on-surface">Más de 2.5 Goles</span>
+</div>
+<span class="text-xs font-data-mono text-secondary">88% CONFIANZA</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">El análisis estadístico muestra una alta eficiencia ofensiva en los enfrentamientos recientes entre Arsenal y Liverpool.</p>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden mt-2">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[88%]"></div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant flex justify-between items-center">
+<span class="text-xs text-outline">Selección Experta: @AlexStats</span>
+<span class="text-primary font-bold">1.72 Cuotas</span>
+</div>
+</div>
+<!-- Prediction 2 -->
+<div class="bg-surface-container-high rounded-xl p-md border border-outline-variant flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-bold text-on-surface">Victoria Local</span>
+</div>
+<span class="text-xs font-data-mono text-tertiary">72% CONFIANZA</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">El récord en casa del Real Madrid sigue siendo dominante esta temporada con 0 derrotas en 15 partidos.</p>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden mt-2">
+<div class="h-full bg-gradient-to-r from-primary to-tertiary w-[72%]"></div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant flex justify-between items-center">
+<span class="text-xs text-outline">Selección Experta: @BetKing</span>
+<span class="text-primary font-bold">2.10 Cuotas</span>
+</div>
+</div>
+<!-- Prediction 3 -->
+<div class="bg-surface-container-high rounded-xl p-md border border-outline-variant flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<span class="font-bold text-on-surface">Ambos Equipos Anotan</span>
+</div>
+<span class="text-xs font-data-mono text-primary">65% CONFIANZA</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Inter Milán vs AC Milán: Un derbi históricamente agresivo que a menudo resulta en goles de ambos lados.</p>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden mt-2">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant flex justify-between items-center">
+<span class="text-xs text-outline">Selección Experta: @DerbyInsider</span>
+<span class="text-primary font-bold">1.95 Cuotas</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant shadow-[0px_-4px_12px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 px-4 pb-safe z-50">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary bg-secondary-container/20 rounded-xl px-4 py-1 active:scale-90 transition-all duration-200" href="{{DATA:SCREEN:SCREEN_13}}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-md text-label-md mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-variant/20 rounded-xl transition-all px-4 py-1 active:scale-90 duration-200" href="{{DATA:SCREEN:SCREEN_8}}">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md mt-1">Historial</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-variant/20 rounded-xl transition-all px-4 py-1 active:scale-90 duration-200" href="{{DATA:SCREEN:SCREEN_17}}">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md mt-1">Cuotas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-variant/20 rounded-xl transition-all px-4 py-1 active:scale-90 duration-200" href="{{DATA:SCREEN:SCREEN_23}}">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-1">Perfil</span>
+</a>
+</nav>
+<!-- Contextual FAB -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-14 h-14 rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all neon-glow-primary z-40">
+<span class="material-symbols-outlined">add</span>
+</button>
+<script>
+        // Micro-interaction: Dynamic number animation for scores or odds
+        document.querySelectorAll('.font-display-lg').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.classList.add('scale-110', 'text-secondary');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-110', 'text-secondary');
+            });
+        });
+
+        // Horizontal scroll momentum effect (Basic implementation)
+        const scrolls = document.querySelectorAll('.overflow-x-auto');
+        scrolls.forEach(scroller => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            scroller.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - scroller.offsetLeft;
+                scrollLeft = scroller.scrollLeft;
+            });
+            scroller.addEventListener('mouseleave', () => { isDown = false; });
+            scroller.addEventListener('mouseup', () => { isDown = false; });
+            scroller.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - scroller.offsetLeft;
+                const walk = (x - startX) * 2;
+                scroller.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+</body></html>
