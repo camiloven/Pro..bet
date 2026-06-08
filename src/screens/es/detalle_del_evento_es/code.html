@@ -1,1 +1,402 @@
+<!DOCTYPE html>
 
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .glow-primary {
+            box-shadow: 0px 0px 12px rgba(56, 189, 248, 0.3);
+        }
+        .glow-secondary {
+            box-shadow: 0px 0px 12px rgba(78, 222, 163, 0.3);
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pulse-dot {
+            animation: pulse-dot 2s infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "on-tertiary-fixed": "#2a1700",
+                        "background": "#0b1326",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#001e2c",
+                        "on-surface-variant": "#bdc8d1",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary": "#472a00",
+                        "outline-variant": "#3e484f",
+                        "surface": "#0b1326",
+                        "primary-container": "#38bdf8",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "primary": "#8ed5ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-container": "#004965",
+                        "outline": "#87929a",
+                        "secondary": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#f59e0b",
+                        "primary-fixed": "#c4e7ff",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary": "#ffc174",
+                        "inverse-primary": "#00668a",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-background": "#dae2fd",
+                        "on-primary": "#00354a",
+                        "on-surface": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-container": "#00311f",
+                        "on-primary-fixed-variant": "#004c69",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#613b00",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#7bd0ff",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-dim": "#0b1326",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-secondary": "#003824",
+                        "on-error": "#690005",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-container": "#00a572"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant shadow-sm flex justify-between items-center px-margin-mobile py-sm md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/50 p-2 rounded-full transition-colors active:scale-95">arrow_back</button>
+<span class="font-headline-md text-headline-md font-extrabold tracking-tighter text-primary dark:text-primary">PRO-BET</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/50 p-2 rounded-full transition-colors active:scale-95">notifications</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Perfil de Usuario" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3yolk6hO999lt5MtY6g0rfzJTbW4G3oHSMAdcsLwsjd6W1hLM9Ncg5MF0L9dKxl8HOQ6xm3eSXohqBTaVJZi--cMn3vAiykuk8sBggUQTAcgegzctZGN-R5QzdLmH-jT_R4w9W0JwHy6iea4QF8xaJkyApDnhCxEj1RcDwIXkV4btpQYBxhoWWm_VQphMyrUiM2AiKq5vWK0MUwcTn3UNeqymz4LNho6gDF9-zpAsBG5O4xTY7qGipvRJRRtSIUKTnMoqp8CKR8Ov"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg space-y-lg">
+<!-- Scoreboard Hero Section -->
+<section class="relative overflow-hidden rounded-xl border border-outline-variant bg-surface-container-low">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 50% 50%, #38bdf8 0%, transparent 70%);"></div>
+<div class="relative z-10 p-lg flex flex-col md:flex-row items-center justify-between gap-xl">
+<!-- Team A -->
+<div class="flex flex-col items-center gap-md flex-1">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full glass-panel flex items-center justify-center p-base border-2 border-primary/30">
+<img alt="London Blues FC" class="w-20 h-20 md:w-28 md:h-28 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl3Lxj8qElH2xjPs2RrJ9GqISufyUoyOLHYsn8dry16zjEO99Dn2TlvYhwo7n9z0VwAwJZBVNh5FEaKQuh92b3acZm-P8f1o9quT015l6B6izGlduHEx4-3EpTjbx_7MpC9GbzbSqNHXWgJ6vm5a4arFq30RS73a8kHaGsyC-C09QE4r-JVtm_TYXDH1h86e1_ujm5jOdyZUD2xImOFI6gaapSRaadxuV5-y7A8uJZFKaXFLqpyxm38YuY-ls9KrwxE4Srt1_qFLs9"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-center">London Blues</h2>
+<span class="text-label-md font-label-md text-on-surface-variant">LOCAL</span>
+</div>
+<!-- Live Score -->
+<div class="flex flex-col items-center justify-center gap-sm">
+<div class="flex items-center gap-base mb-base">
+<span class="w-2 h-2 bg-secondary rounded-full animate-pulse-dot"></span>
+<span class="text-secondary font-data-mono uppercase tracking-widest text-sm">Vivo - 74'</span>
+</div>
+<div class="flex items-center gap-lg">
+<span class="font-display-lg text-display-lg tabular-nums">2</span>
+<span class="text-outline font-headline-md text-headline-md">-</span>
+<span class="font-display-lg text-display-lg tabular-nums text-on-surface-variant">1</span>
+</div>
+<div class="px-md py-base bg-surface-variant rounded-full border border-outline-variant">
+<span class="font-data-mono text-primary">Premier League</span>
+</div>
+</div>
+<!-- Team B -->
+<div class="flex flex-col items-center gap-md flex-1">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full glass-panel flex items-center justify-center p-base border-2 border-outline-variant">
+<img alt="Manchester Peaks FC" class="w-20 h-20 md:w-28 md:h-28 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYmAMC73c9OMgEk861mzXR-R-yFvjFXSRVLC5-UkIPfSYbBpwFYokm7Gq3PC2E7dpB8amQMjClD35nAIOg3qhaNZH6ctggZBaLoUcD-bfm_85vTFfwuftXxEoOZmFaH3OEBNlY48S4hsTMktguiIxl6IRKrlxWelVU30zA1WW4VdNYGzOyuQf4el55so7plV5K6HemJZ4TdN54MMUgTWlYm23n0a07XQxMId_f1BGS2-FYWwAOQdjWBmff5d9azeoXkrAbduRpShJ_"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-center">Manchester Peaks</h2>
+<span class="text-label-md font-label-md text-on-surface-variant">VISITANTE</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Analytics & Predictions -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Pro Prediction Card (Bento Large) -->
+<div class="md:col-span-7 lg:col-span-8 flex flex-col gap-lg">
+<div class="glass-panel rounded-xl p-lg space-y-md border-l-4 border-l-secondary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-lg opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h3 class="font-headline-md text-headline-md">Predicción Pro</h3>
+</div>
+<p class="text-on-surface-variant font-body-md max-w-md">Nuestros modelos de IA sugieren un fuerte impulso para el equipo local. London Blues controla el mediocampo con un 82% de precisión de pase en el tercio final.</p>
+<div class="flex flex-wrap gap-xl items-center pt-md">
+<div class="space-y-base">
+<span class="text-label-md font-label-md text-outline uppercase tracking-wider">Probabilidad de Victoria</span>
+<div class="flex items-center gap-md">
+<span class="font-display-lg text-display-lg text-secondary">74.2%</span>
+<div class="flex flex-col">
+<span class="text-secondary material-symbols-outlined">trending_up</span>
+<span class="text-xs text-secondary font-bold">+5.1%</span>
+</div>
+</div>
+</div>
+<div class="h-16 w-px bg-outline-variant hidden sm:block"></div>
+<div class="space-y-base">
+<span class="text-label-md font-label-md text-outline uppercase tracking-wider">Apuesta Recomendada</span>
+<div class="flex items-center gap-sm">
+<span class="px-md py-base bg-secondary-container/20 text-secondary border border-secondary/30 rounded-xl font-bold">Local Gana Próximo Gol</span>
+<span class="font-data-mono text-xl text-primary">@ 1.85</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary-container font-headline-md text-headline-md py-md rounded-xl glow-primary active:scale-[0.98] transition-all hover:bg-primary-container">
+                        Realizar Apuesta Seleccionada
+                    </button>
+</div>
+<!-- Match Events Timeline -->
+<div class="bg-surface-container rounded-xl p-lg border border-outline-variant">
+<h3 class="font-headline-md text-headline-md mb-lg">Eventos del Partido</h3>
+<div class="space-y-lg relative before:content-[''] before:absolute before:left-4 before:top-0 before:bottom-0 before:w-px before:bg-outline-variant">
+<!-- Goal -->
+<div class="relative pl-12 flex items-center justify-between">
+<div class="absolute left-0 w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-on-secondary z-10 glow-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">sports_soccer</span>
+</div>
+<div>
+<p class="font-bold">¡Gol! - London Blues</p>
+<p class="text-on-surface-variant text-sm">Marcus Sterling (Cabezazo)</p>
+</div>
+<span class="font-data-mono text-outline">62'</span>
+</div>
+<!-- Yellow Card -->
+<div class="relative pl-12 flex items-center justify-between">
+<div class="absolute left-0 w-8 h-8 rounded-full bg-tertiary flex items-center justify-center text-on-tertiary z-10">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">style</span>
+</div>
+<div>
+<p class="font-bold">Tarjeta Amarilla - Peaks FC</p>
+<p class="text-on-surface-variant text-sm">David Chen (Falta)</p>
+</div>
+<span class="font-data-mono text-outline">48'</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Statistics Section (Bento Side) -->
+<div class="md:col-span-5 lg:col-span-4 bg-surface-container rounded-xl p-lg border border-outline-variant space-y-xl">
+<h3 class="font-headline-md text-headline-md">Estadísticas del Partido</h3>
+<!-- Stat Item: Possession -->
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-primary">58%</span>
+<span class="text-outline uppercase">Posesión</span>
+<span class="text-on-surface-variant">42%</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 58%"></div>
+<div class="h-full bg-outline-variant/30" style="width: 42%"></div>
+</div>
+</div>
+<!-- Stat Item: Shots -->
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-primary">12 (6)</span>
+<span class="text-outline uppercase">Tiros (A Puerta)</span>
+<span class="text-on-surface-variant">8 (3)</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 60%"></div>
+<div class="h-full bg-outline-variant/30" style="width: 40%"></div>
+</div>
+</div>
+<!-- Stat Item: Accuracy -->
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-primary">88%</span>
+<span class="text-outline uppercase">Precisión de Pase</span>
+<span class="text-on-surface-variant">81%</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 88%"></div>
+<div class="h-full bg-outline-variant/30" style="width: 81%"></div>
+</div>
+</div>
+<!-- Stat Item: Corners -->
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-primary">6</span>
+<span class="text-outline uppercase">Córners</span>
+<span class="text-on-surface-variant">4</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 60%"></div>
+<div class="h-full bg-outline-variant/30" style="width: 40%"></div>
+</div>
+</div>
+<!-- Live Momentum Chart Placeholder -->
+<div class="pt-lg border-t border-outline-variant">
+<span class="text-label-md font-label-md text-outline uppercase block mb-md">Momento en Vivo (Últ. 10m)</span>
+<div class="h-32 w-full bg-surface-container-low rounded-xl border border-outline-variant flex items-end p-base gap-1">
+<div class="bg-primary/20 hover:bg-primary w-full h-1/4 rounded-t-sm transition-all cursor-pointer"></div>
+<div class="bg-primary/30 hover:bg-primary w-full h-1/3 rounded-t-sm transition-all cursor-pointer"></div>
+<div class="bg-primary/40 hover:bg-primary w-full h-1/2 rounded-t-sm transition-all cursor-pointer"></div>
+<div class="bg-secondary/60 hover:bg-secondary w-full h-3/4 rounded-t-sm transition-all cursor-pointer"></div>
+<div class="bg-secondary hover:bg-secondary w-full h-full rounded-t-sm transition-all cursor-pointer"></div>
+<div class="bg-secondary/80 hover:bg-secondary w-full h-2/3 rounded-t-sm transition-all cursor-pointer"></div>
+<div class="bg-primary/30 hover:bg-primary w-full h-1/3 rounded-t-sm transition-all cursor-pointer"></div>
+<div class="bg-primary/20 hover:bg-primary w-full h-1/4 rounded-t-sm transition-all cursor-pointer"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Betting Markets -->
+<section class="space-y-md">
+<h3 class="font-headline-md text-headline-md">Mercados Principales</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Market Card -->
+<div class="bg-surface-container rounded-xl p-md border border-outline-variant flex flex-col gap-md">
+<span class="text-label-md font-label-md text-outline uppercase">Resultado del Partido</span>
+<div class="grid grid-cols-3 gap-sm">
+<button class="flex flex-col items-center justify-center p-md bg-surface-variant hover:bg-primary/20 border border-outline-variant rounded-xl transition-all group">
+<span class="text-xs text-outline mb-1">1</span>
+<span class="font-data-mono text-primary text-lg">1.45</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-surface-variant hover:bg-primary/20 border border-outline-variant rounded-xl transition-all">
+<span class="text-xs text-outline mb-1">X</span>
+<span class="font-data-mono text-primary text-lg">4.20</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-surface-variant hover:bg-primary/20 border border-outline-variant rounded-xl transition-all">
+<span class="text-xs text-outline mb-1">2</span>
+<span class="font-data-mono text-primary text-lg">6.50</span>
+</button>
+</div>
+</div>
+<!-- Market Card -->
+<div class="bg-surface-container rounded-xl p-md border border-outline-variant flex flex-col gap-md">
+<span class="text-label-md font-label-md text-outline uppercase">Más / Menos (3.5)</span>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex flex-col items-center justify-center p-md bg-surface-variant hover:bg-primary/20 border border-outline-variant rounded-xl transition-all">
+<span class="text-xs text-outline mb-1">Más de</span>
+<span class="font-data-mono text-primary text-lg">1.95</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-surface-variant hover:bg-primary/20 border border-outline-variant rounded-xl transition-all">
+<span class="text-xs text-outline mb-1">Menos de</span>
+<span class="font-data-mono text-primary text-lg">1.82</span>
+</button>
+</div>
+</div>
+<!-- Market Card -->
+<div class="bg-surface-container rounded-xl p-md border border-outline-variant flex flex-col gap-md">
+<span class="text-label-md font-label-md text-outline uppercase">Próximo Goleador</span>
+<div class="flex items-center justify-between p-md bg-surface-variant border border-outline-variant rounded-xl">
+<div class="flex flex-col">
+<span class="font-bold">M. Sterling</span>
+<span class="text-xs text-outline">London Blues</span>
+</div>
+<button class="px-md py-base bg-primary/20 text-primary border border-primary/30 rounded-lg font-data-mono">
+                            3.40
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe bg-surface-container dark:bg-surface-container border-t border-outline-variant shadow-[0px_-4px_12px_rgba(0,0,0,0.5)] z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-label-md text-label-md">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary bg-secondary-container/20 rounded-xl px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-md text-label-md">Cuotas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">history</span>
+<span class="font-label-md text-label-md">Historial</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-md text-label-md">Perfil</span>
+</a>
+</nav>
+<script>
+        // Micro-interacción simple para botones de cuotas
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', function() {
+                this.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>
