@@ -1,1 +1,352 @@
+<!DOCTYPE html>
 
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-primary { box-shadow: 0px 0px 12px rgba(142, 213, 255, 0.3); }
+        .glow-secondary { box-shadow: 0px 0px 12px rgba(78, 222, 163, 0.3); }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse-slow { animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#dae2fd",
+                    "on-surface": "#dae2fd",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-tint": "#7bd0ff",
+                    "surface": "#0b1326",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-secondary-container": "#00311f",
+                    "outline": "#87929a",
+                    "primary-fixed": "#c4e7ff",
+                    "outline-variant": "#3e484f",
+                    "tertiary": "#ffc174",
+                    "background": "#0b1326",
+                    "surface-dim": "#0b1326",
+                    "surface-container": "#171f33",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "surface-variant": "#2d3449",
+                    "on-tertiary": "#472a00",
+                    "on-primary-fixed": "#001e2c",
+                    "on-secondary": "#003824",
+                    "secondary-fixed": "#6ffbbe",
+                    "secondary-fixed-dim": "#4edea3",
+                    "primary-container": "#38bdf8",
+                    "on-secondary-fixed": "#002113",
+                    "secondary-container": "#00a572",
+                    "secondary": "#4edea3",
+                    "primary-fixed-dim": "#7bd0ff",
+                    "on-background": "#dae2fd",
+                    "on-primary-fixed-variant": "#004c69",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#222a3d",
+                    "tertiary-container": "#f59e0b",
+                    "surface-container-lowest": "#060e20",
+                    "on-tertiary-container": "#613b00",
+                    "surface-container-low": "#131b2e",
+                    "on-error": "#690005",
+                    "inverse-primary": "#00668a",
+                    "surface-bright": "#31394d",
+                    "primary": "#8ed5ff",
+                    "on-surface-variant": "#bdc8d1",
+                    "inverse-on-surface": "#283044",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-primary": "#00354a",
+                    "on-primary-container": "#004965",
+                    "surface-container-highest": "#2d3449",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "xl": "40px",
+                    "base": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "data-mono": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "data-mono": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky z-40 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline-variant shadow-sm flex items-center justify-between px-margin-mobile h-16 md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-variant transition-colors p-2 rounded-lg active:scale-95 duration-100">menu</button>
+<h1 class="font-display-lg text-headline-md font-black tracking-tighter text-primary italic">PRO-BET</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="hidden md:block font-label-md text-secondary">Balance: $1,240.50</span>
+<button class="material-symbols-outlined text-primary hover:bg-surface-variant transition-colors p-2 rounded-lg active:scale-95 duration-100">notifications</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto p-margin-mobile md:p-margin-desktop mb-24">
+<!-- Page Title -->
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg md:text-display-lg text-on-surface">Modo Comparativo</h2>
+<p class="text-on-surface-variant font-body-md mt-base">Análisis estadístico profundo cara a cara.</p>
+</div>
+<!-- Team Selection Area -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center mb-xl">
+<div class="md:col-span-5 glass-panel p-lg rounded-xl flex flex-col items-center justify-center text-center">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center border-2 border-primary mb-md glow-primary">
+<img alt="Team 1" class="w-16 h-16" data-alt="A professional football club crest for a team named Madrid United. The logo features a minimalist golden eagle and a crown, set against a dark navy blue background with electric blue highlights, presented in a high-tech glassmorphism style for a modern betting app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7bFnpyRxis3LIAlRIAjAiOaLDTYrYOsOKzcWlvaabVpUTMMtBM47dbRXw0nwkxBFMYYv2hPgIkm7fBR9Wv7hya295pIJRRmmcglsLc6ErMZyuzrJXr5o9dMhvXNDU37G4R2BLy9ezS0CmwaY8xrX6yROTILqb1yUjPrmIlGZFFy02wMh_IHfpPxNsF7sc3R3kijJlTOtclkTbSCnYltE0zs5sBJ2YZsMCGeQfXTF94f0QFni38HBCmxQyXhCr_3IFYk-6dpkFpfYN"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Real Madrid</h3>
+<span class="text-on-surface-variant font-label-md uppercase tracking-wider">Local</span>
+</div>
+<div class="md:col-span-2 flex flex-col items-center justify-center py-md">
+<div class="bg-primary-container text-on-primary-container w-12 h-12 rounded-full flex items-center justify-center font-black italic text-headline-md glow-primary">VS</div>
+</div>
+<div class="md:col-span-5 glass-panel p-lg rounded-xl flex flex-col items-center justify-center text-center">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center border-2 border-secondary mb-md glow-secondary">
+<img alt="Team 2" class="w-16 h-16" data-alt="A modern football club crest for a team named Manchester City. The logo uses a circular shield design with a sailing ship and a red rose, styled with glowing emerald green and silver accents on a deep charcoal background, optimized for a high-stakes professional betting platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBml8G4K7ZKtbYEmzdDdSgSpk5Vm-wOezFNdmyNEl98qI_b7122u8agfvtShq4WdKc8XyhNIDXsSYx5XAaeoKX3AVboUOCJMgvNYJj0N1Vl_T-4lqq31JdMzvVXUE7pDhk3KiLWj7FH3f9s8FIA0BuRjinxu0YZpsHhiLBg6BKj36ksaeHFqH60LyVMFXnbRxbceIxD-9_yiWkRxo9fv9Af58B_xNzVyhoAn1iFPEihiryZphp_OqKHbv6imNwzhuVOingQuJOgcZlv"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Manchester City</h3>
+<span class="text-on-surface-variant font-label-md uppercase tracking-wider">Visitante</span>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg items-start">
+<!-- Left & Middle: Stats & History -->
+<div class="lg:col-span-2 space-y-lg">
+<!-- Key Stats Comparison -->
+<div class="glass-panel p-lg rounded-xl">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-lg border-l-4 border-primary pl-md">Estadísticas Clave</h4>
+<div class="space-y-xl">
+<!-- Stat Item: Goals -->
+<div>
+<div class="flex justify-between mb-xs font-data-mono text-data-mono uppercase">
+<span>2.8 Goles</span>
+<span class="text-on-surface-variant">Promedio Goles</span>
+<span>3.1 Goles</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 48%"></div>
+<div class="h-full bg-secondary" style="width: 52%"></div>
+</div>
+</div>
+<!-- Stat Item: Possession -->
+<div>
+<div class="flex justify-between mb-xs font-data-mono text-data-mono uppercase">
+<span>52%</span>
+<span class="text-on-surface-variant">Posesión</span>
+<span>58%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 45%"></div>
+<div class="h-full bg-secondary" style="width: 55%"></div>
+</div>
+</div>
+<!-- Stat Item: Shots -->
+<div>
+<div class="flex justify-between mb-xs font-data-mono text-data-mono uppercase">
+<span>14.2</span>
+<span class="text-on-surface-variant">Tiros a Puerta</span>
+<span>15.8</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 47%"></div>
+<div class="h-full bg-secondary" style="width: 53%"></div>
+</div>
+</div>
+<!-- Stat Item: Win Rate -->
+<div>
+<div class="flex justify-between mb-xs font-data-mono text-data-mono uppercase">
+<span>74%</span>
+<span class="text-on-surface-variant">Ratio Victoria</span>
+<span>78%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 49%"></div>
+<div class="h-full bg-secondary" style="width: 51%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Form & H2H Side-by-Side -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Recent Form -->
+<div class="glass-panel p-lg rounded-xl">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-widest">Forma Reciente</h4>
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-body-md">Real Madrid</span>
+<div class="flex gap-xs">
+<span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">W</span>
+<span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">W</span>
+<span class="w-8 h-8 rounded-lg bg-outline text-on-surface flex items-center justify-center font-bold text-xs">D</span>
+<span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">W</span>
+<span class="w-8 h-8 rounded-lg bg-error text-on-error flex items-center justify-center font-bold text-xs">L</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md">Man City</span>
+<div class="flex gap-xs">
+<span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">W</span>
+<span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">W</span>
+<span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">W</span>
+<span class="w-8 h-8 rounded-lg bg-outline text-on-surface flex items-center justify-center font-bold text-xs">D</span>
+<span class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">W</span>
+</div>
+</div>
+</div>
+</div>
+<!-- H2H History -->
+<div class="glass-panel p-lg rounded-xl">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-widest">Historial H2H</h4>
+<ul class="space-y-sm">
+<li class="flex justify-between items-center p-xs border-b border-outline-variant">
+<span class="text-sm">Abr 2024</span>
+<span class="font-data-mono font-bold text-secondary">3 - 3</span>
+</li>
+<li class="flex justify-between items-center p-xs border-b border-outline-variant">
+<span class="text-sm">May 2023</span>
+<span class="font-data-mono font-bold text-primary">0 - 4</span>
+</li>
+<li class="flex justify-between items-center p-xs">
+<span class="text-sm">May 2023</span>
+<span class="font-data-mono font-bold text-on-surface">1 - 1</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Prediction & CTA -->
+<aside class="space-y-lg">
+<!-- AI PRO-BET Prediction Card -->
+<div class="bg-surface-container-high rounded-xl p-lg border border-primary relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-md opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">auto_awesome</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-md text-primary uppercase font-bold tracking-widest">IA PRO-BET Prediction</span>
+</div>
+<h5 class="font-headline-md text-headline-md text-on-surface mb-md">Probabilidad de Victoria</h5>
+<div class="flex items-end gap-md mb-lg">
+<span class="text-6xl font-black italic text-secondary">62%</span>
+<span class="text-on-surface-variant font-body-md pb-xs">Manchester City</span>
+</div>
+<div class="p-md bg-surface-container rounded-lg border-l-2 border-secondary mb-md">
+<p class="text-sm text-on-surface-variant italic">"El algoritmo detecta una ventaja táctica en el control de mediocampo para el equipo visitante basado en los últimos 3 enfrentamientos."</p>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary-container text-on-primary-container py-lg rounded-xl font-headline-md text-headline-md italic uppercase tracking-tighter glow-primary transition-all active:scale-95 hover:brightness-110 flex items-center justify-center gap-md">
+<span>Realizar Apuesta</span>
+<span class="material-symbols-outlined font-black">trending_up</span>
+</button>
+<!-- Market Odds Chips -->
+<div class="grid grid-cols-3 gap-sm">
+<div class="bg-surface-container p-md rounded-lg text-center cursor-pointer hover:bg-primary hover:text-on-primary transition-all active:scale-95 group">
+<span class="block text-xs text-on-surface-variant group-hover:text-on-primary">Real Madrid</span>
+<span class="font-data-mono text-lg">3.40</span>
+</div>
+<div class="bg-surface-container p-md rounded-lg text-center cursor-pointer hover:bg-primary hover:text-on-primary transition-all active:scale-95 group">
+<span class="block text-xs text-on-surface-variant group-hover:text-on-primary">Empate</span>
+<span class="font-data-mono text-lg">3.75</span>
+</div>
+<div class="bg-primary p-md rounded-lg text-center cursor-pointer glow-primary group">
+<span class="block text-xs text-on-primary">Man City</span>
+<span class="font-data-mono text-lg text-on-primary">2.10</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile View) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 bg-surface-container border-t border-outline-variant shadow-[0px_-4px_12px_rgba(0,0,0,0.5)] pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-md text-label-md">Odds</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<!-- Floating Atmosphere Elements -->
+<div class="fixed top-20 -left-20 w-64 h-64 bg-primary/10 blur-[100px] pointer-events-none"></div>
+<div class="fixed bottom-20 -right-20 w-80 h-80 bg-secondary/10 blur-[120px] pointer-events-none"></div>
+<script>
+        // Simple micro-interaction for odds chips
+        const oddsChips = document.querySelectorAll('.bg-surface-container.p-md');
+        oddsChips.forEach(chip => {
+            chip.addEventListener('click', function() {
+                oddsChips.forEach(c => {
+                    c.classList.remove('bg-primary', 'text-on-primary', 'glow-primary');
+                    c.classList.add('bg-surface-container');
+                });
+                this.classList.remove('bg-surface-container');
+                this.classList.add('bg-primary', 'text-on-primary', 'glow-primary');
+            });
+        });
+    </script>
+</body></html>
