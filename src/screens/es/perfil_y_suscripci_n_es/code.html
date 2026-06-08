@@ -1,1 +1,350 @@
+<!DOCTYPE html>
 
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRO-BET | Perfil y Suscripción</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "on-tertiary-fixed": "#2a1700",
+                        "background": "#0b1326",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#001e2c",
+                        "on-surface-variant": "#bdc8d1",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary": "#472a00",
+                        "outline-variant": "#3e484f",
+                        "surface": "#0b1326",
+                        "primary-container": "#38bdf8",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "primary": "#8ed5ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-container": "#004965",
+                        "outline": "#87929a",
+                        "secondary": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#f59e0b",
+                        "primary-fixed": "#c4e7ff",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary": "#ffc174",
+                        "inverse-primary": "#00668a",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-background": "#dae2fd",
+                        "on-primary": "#00354a",
+                        "on-surface": "#dae2fd",
+                        "surface-container-high": "#222a3d",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-container": "#00311f",
+                        "on-primary-fixed-variant": "#004c69",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#613b00",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#7bd0ff",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-dim": "#0b1326",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-secondary": "#003824",
+                        "on-error": "#690005",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-container": "#00a572"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "data-mono": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px -3px rgba(78, 222, 163, 0.3);
+        }
+        .vip-card-gradient {
+            background: linear-gradient(135deg, #171f33 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .vip-card-gradient::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            background: linear-gradient(90deg, #8ed5ff, #4edea3, #ffc174) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0.5;
+        }
+        .pulsing-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30 min-h-screen">
+<!-- Top App Bar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low border-b border-outline-variant dark:border-outline-variant shadow-sm w-full top-0 sticky z-50 flex justify-between items-center px-margin-mobile py-sm w-full h-16">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-primary/20">
+<img alt="user_profile_photo" class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a confident male professional in his late 20s, wearing dark tech-wear apparel. The lighting is dramatic with cool blue and emerald green highlights that match a high-tech sports betting app aesthetic. The background is a soft-focus dark slate, emphasizing a professional and focused atmosphere for an analytics-driven platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdK4cU0lNYgvXuugERUTm0yQzmXJa2p8fR7zfcYMgEUAQS_7mcFOxCnWfjunEZiuXc7tZorcuD_l2NJT4MLZtSyxq9-7B5NaL-AyH4fuL3j7Xn91sdXA0sIGLm80PSNDiXpFXrpA9E8XfphsazjLBrb-ucr07r0Z-o3PCfPYqVv-cQJWbwTqscWNHBUvOTXBvsswq56nHxv9bAtkNAKUt4k-hr-WKG7OS-p_RNnF6FQenULpK2sk438yGsrcue_S2D6WqCnNIauYxV"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-extrabold tracking-tighter text-primary dark:text-primary">PRO-BET</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-margin-mobile pt-lg pb-32">
+<!-- Profile Card -->
+<section class="bg-surface-container rounded-xl p-lg border border-outline-variant mb-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-label-md font-bold flex items-center gap-1 border border-secondary/20">
+<span class="w-2 h-2 bg-secondary rounded-full pulsing-dot"></span>
+                    Rango: PRO ANALISTA
+                </span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center gap-lg mb-xl">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Alex Rivera</h2>
+<p class="text-on-surface-variant font-body-md">Miembro desde Oct 2023 • <span class="text-primary">Premium Activo</span></p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-gutter">
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/50 flex flex-col items-center justify-center text-center">
+<p class="text-on-surface-variant font-label-md mb-base">Total Apuestas</p>
+<p class="font-headline-md text-headline-md text-primary font-bold">1,284</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/50 flex flex-col items-center justify-center text-center">
+<p class="text-on-surface-variant font-label-md mb-base">Victorias</p>
+<p class="font-headline-md text-headline-md text-secondary font-bold">842</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant/50 flex flex-col items-center justify-center text-center">
+<p class="text-on-surface-variant font-label-md mb-base">Nivel</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<p class="font-headline-md text-headline-md text-tertiary font-bold">42</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Subscription / Go VIP Card -->
+<section class="vip-card-gradient rounded-xl p-lg border border-primary/30 mb-lg neon-glow">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-lg">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-tertiary font-bold">verified</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-extrabold uppercase tracking-tight">Mejorar a VIP</h3>
+</div>
+<p class="text-on-surface-variant font-body-md mb-lg">Desbloquea herramientas de nivel profesional y maximiza tu probabilidad de victoria con nuestro motor de análisis de élite.</p>
+<ul class="space-y-sm mb-lg">
+<li class="flex items-center gap-md text-on-surface font-label-md">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            Análisis de Expertos y Modelos de Predicción
+                        </li>
+<li class="flex items-center gap-md text-on-surface font-label-md">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            Alertas de Cuotas Instantáneas y Cambios de Mercado
+                        </li>
+<li class="flex items-center gap-md text-on-surface font-label-md">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                            Acceso Ilimitado al Historial
+                        </li>
+</ul>
+</div>
+<div class="bg-surface-container-high/60 backdrop-blur-md p-lg rounded-xl border border-outline-variant flex flex-col items-center min-w-[200px]">
+<p class="text-on-surface-variant font-label-md mb-base">Desde solo</p>
+<div class="flex items-baseline gap-1 mb-md">
+<span class="text-headline-lg text-headline-lg font-bold text-on-surface">$24.99</span>
+<span class="text-on-surface-variant font-label-md">/mes</span>
+</div>
+<button class="w-full bg-secondary text-on-secondary font-label-md py-3 rounded-full hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-secondary/20">
+                        OBTENER ACCESO VIP
+                    </button>
+</div>
+</div>
+</section>
+<!-- Settings List -->
+<section class="space-y-sm">
+<h4 class="font-label-md text-label-md text-on-surface-variant px-sm uppercase tracking-widest">Configuración de Cuenta</h4>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl divide-y divide-outline-variant overflow-hidden">
+<!-- Security -->
+<button class="w-full flex items-center justify-between p-lg hover:bg-surface-variant transition-colors group">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-on-surface group-hover:text-primary transition-colors">Seguridad y Privacidad</p>
+<p class="text-sm text-on-surface-variant">2FA, Contraseña, Intercambio de datos</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- Notifications -->
+<button class="w-full flex items-center justify-between p-lg hover:bg-surface-variant transition-colors group">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-on-surface group-hover:text-secondary transition-colors">Notificaciones</p>
+<p class="text-sm text-on-surface-variant">Alertas de cuotas, Resultados, Promociones</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- Help -->
+<button class="w-full flex items-center justify-between p-lg hover:bg-surface-variant transition-colors group">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">help_center</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-on-surface group-hover:text-tertiary transition-colors">Ayuda y Soporte</p>
+<p class="text-sm text-on-surface-variant">Chat en vivo, FAQ, Guías de usuario</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</div>
+<!-- Danger Zone -->
+<button class="w-full mt-lg text-error font-label-md text-label-md flex items-center justify-center gap-sm py-md rounded-xl hover:bg-error/5 transition-colors border border-transparent hover:border-error/20">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                Cerrar Sesión
+            </button>
+</section>
+</main>
+<!-- Navigation Drawer (Desktop Placeholder Logic - Hidden on Mobile) -->
+<aside class="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-80 bg-surface-container-high dark:bg-surface-container-high border-r border-outline-variant shadow-xl flex-col gap-2 p-4 z-40">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant rounded-r-full transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="font-body-md">Lobby de Deportes</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant rounded-r-full transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined">live_tv</span>
+<span class="font-body-md">Mercados en Vivo</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant rounded-r-full transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md">Mis Apuestas</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant rounded-r-full transition-colors cursor-pointer" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-body-md">Picks de Expertos</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-bold rounded-r-full flex items-center gap-md p-md transition-all duration-200 cursor-pointer" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Configuración</span>
+</a>
+</div>
+<div class="mt-auto p-md bg-surface-container rounded-xl border border-outline-variant">
+<p class="text-xs text-on-surface-variant uppercase mb-base">Estado de la App</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-secondary">v2.4.0 Activa</span>
+<span class="w-2 h-2 bg-secondary rounded-full pulsing-dot"></span>
+</div>
+</div>
+</aside>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container dark:bg-surface-container border-t border-outline-variant shadow-[0px_-4px_12px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 px-4 pb-safe z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-label-md">Inicio</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">Historial</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Cuotas</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary bg-secondary-container/20 rounded-xl px-4 py-1 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Perfil</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for button hover effects
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                // Potential for haptic-style sound or subtle scale
+            });
+        });
+
+        // Add glassmorphism scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('backdrop-blur-md', 'bg-surface-container-low/80');
+            } else {
+                header.classList.remove('backdrop-blur-md', 'bg-surface-container-low/80');
+            }
+        });
+    </script>
+</body></html>
