@@ -1,1 +1,231 @@
+<!DOCTYPE html>
 
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRO-BET | Sports Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes loading-bar {
+            0% { width: 0%; }
+            20% { width: 10%; }
+            50% { width: 65%; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.7)); transform: scale(1.02); }
+        }
+
+        .animate-loading {
+            animation: loading-bar 4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        .animate-logo-pulse {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .glass-overlay {
+            background: radial-gradient(circle at center, rgba(11, 19, 38, 0.4) 0%, rgba(11, 19, 38, 0.85) 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#00354a",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "primary-fixed": "#c4e7ff",
+                        "on-tertiary": "#472a00",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004c69",
+                        "on-tertiary-container": "#613b00",
+                        "on-secondary-container": "#00311f",
+                        "surface-container-low": "#131b2e",
+                        "outline-variant": "#3e484f",
+                        "on-primary-container": "#004965",
+                        "background": "#0b1326",
+                        "surface": "#0b1326",
+                        "surface-tint": "#7bd0ff",
+                        "tertiary-container": "#f59e0b",
+                        "secondary": "#4edea3",
+                        "on-surface-variant": "#bdc8d1",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-container-lowest": "#060e20",
+                        "primary-container": "#38bdf8",
+                        "on-surface": "#dae2fd",
+                        "inverse-primary": "#00668a",
+                        "on-secondary-fixed": "#002113",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "surface-variant": "#2d3449",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary": "#ffc174",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-dim": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "primary": "#8ed5ff",
+                        "on-background": "#dae2fd",
+                        "outline": "#87929a",
+                        "inverse-surface": "#dae2fd",
+                        "on-primary-fixed": "#001e2c",
+                        "surface-container": "#171f33",
+                        "on-secondary": "#003824",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-bright": "#31394d",
+                        "inverse-on-surface": "#283044",
+                        "surface-container-high": "#222a3d",
+                        "secondary-container": "#00a572"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background overflow-hidden selection:bg-primary selection:text-on-primary">
+<!-- Splash Container -->
+<main class="relative flex flex-col items-center justify-center min-h-screen w-full">
+<!-- VIDEO BACKGROUND PLACEHOLDER -->
+<div class="absolute inset-0 z-0 overflow-hidden">
+<img class="w-full h-full object-cover scale-105 blur-[2px]" data-alt="A cinematic, high-speed sports montage featuring athletes in motion, blurred lights of a stadium at night, and dynamic energy. The scene is bathed in deep navy blue and charcoal tones, reflecting a high-tech and professional atmosphere. Soft neon cyan highlights trace the edges of the moving figures, creating a sense of momentum and digital precision within a premium sports betting environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGuAqu2xzsHxF01D3jUt5IUAOm7eE3BbeoWpKbS7CkFGN0c8Qs9Wku63x4YkHEJnfWKTlH1-NvroBmoNzBAqsiDUp1UdVcANnCbssnpetTVglJXkbFhp8ntK1PKMvBKZHkoHS_wX6xUrcxkZ6bvRgAAn4cUpmz1mMbanDp0318ei32liYMx6dbukiLDGdXkMtOFO7Ck4atNS11OAsd-5XVhjW4bF7rRLpV00XNbaFDJ2pLMTzriIEZTjXR95Nwc-wQ3F6OpBl_4NU0"/>
+<!-- Dark Gradient Overlay -->
+<div class="absolute inset-0 glass-overlay z-10"></div>
+</div>
+<!-- TOP BAR (From Shared Components: TopAppBar Mapping) -->
+<header class="fixed top-0 w-full z-30 flex justify-center items-center h-16 px-margin-mobile bg-transparent opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary tracking-tighter">PRO-BET</span>
+</div>
+</header>
+<!-- CENTER CONTENT: HERO BRANDING -->
+<div class="relative z-20 flex flex-col items-center justify-center">
+<!-- Neon Logo Logic -->
+<div class="animate-logo-pulse flex flex-col items-center">
+<div class="mb-4">
+<span class="material-symbols-outlined text-primary text-[64px] md:text-[80px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary-container tracking-tighter mb-2">
+                    PRO-BET
+                </h1>
+<p class="font-label-md text-label-md text-secondary tracking-[0.4em] uppercase">
+                    Sports Intelligence
+                </p>
+</div>
+<!-- Atmospheric Data Micro-Interaction -->
+<div class="mt-8 flex gap-6 opacity-60">
+<div class="flex flex-col items-center">
+<span class="font-data-mono text-data-mono text-primary">REAL-TIME</span>
+<div class="h-[1px] w-8 bg-primary mt-1"></div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-data-mono text-data-mono text-secondary">PREDICTIVE</span>
+<div class="h-[1px] w-8 bg-secondary mt-1"></div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-data-mono text-data-mono text-tertiary">SECURE</span>
+<div class="h-[1px] w-8 bg-tertiary mt-1"></div>
+</div>
+</div>
+</div>
+<!-- BOTTOM LOADING SECTION -->
+<footer class="fixed bottom-0 left-0 w-full z-30 px-margin-mobile pb-12 flex flex-col items-center">
+<!-- Loading Percentage (JS updated) -->
+<div class="font-data-mono text-data-mono text-on-surface-variant mb-4 transition-all duration-300" id="loading-text">
+                INITIALIZING ENGINES... 0%
+            </div>
+<!-- Progress Bar Container -->
+<div class="w-full max-w-md h-[2px] bg-surface-variant rounded-full overflow-hidden relative">
+<!-- Glowing Progress Fill -->
+<div class="animate-loading h-full bg-primary-container shadow-[0_0_10px_rgba(56,189,248,0.8)]"></div>
+</div>
+<!-- Footer Copyright (From Shared Components) -->
+<div class="mt-8 opacity-40">
+<span class="font-label-md text-label-md text-primary">© 2024 PRO-BET INTELLIGENCE</span>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interaction for loading text
+        const loadingText = document.getElementById('loading-text');
+        const statuses = [
+            "CONNECTING TO GLOBAL FEEDS...",
+            "ANALYZING LIVE MARKETS...",
+            "OPTIMIZING ODDS ALGORITHMS...",
+            "SECURE TUNNEL ESTABLISHED...",
+            "READY FOR ACTION"
+        ];
+        
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 1;
+            const statusIndex = Math.min(Math.floor((progress / 100) * statuses.length), statuses.length - 1);
+            
+            if (progress <= 100) {
+                loadingText.innerText = `${statuses[statusIndex]} ${progress}%`;
+            } else {
+                clearInterval(interval);
+                loadingText.classList.add('text-secondary');
+            }
+        }, 40);
+
+        // Simple mouse tracking parallax for subtle depth
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            document.querySelector('.scale-105').style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+</body></html>
