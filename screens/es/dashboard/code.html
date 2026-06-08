@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRO-BET | Análisis Deportivo Profesional</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+    .pulse-live {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .5; }
+    }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "surface-container": "#171f33",
+                    "background": "#0b1326",
+                    "primary": "#8ed5ff",
+                    "primary-container": "#38bdf8",
+                    "secondary": "#4edea3",
+                    "on-surface": "#dae2fd",
+                    "on-surface-variant": "#bdc8d1"
+                }
+            }
+        }
+    }
+</script>
+</head>
+<body class="bg-[#0b1326] text-white">
+
+<!-- Aquí está el Dashboard completo (versión en español) -->
+<header class="bg-[#171f33] p-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+        <h1 class="text-2xl font-bold text-[#8ed5ff]">PRO-BET</h1>
+    </div>
+    <div class="flex gap-4">
+        <span class="material-symbols-outlined">search</span>
+        <span class="material-symbols-outlined">notifications</span>
+    </div>
+</header>
+
+<main class="p-4 space-y-6">
+    <h2 class="text-xl font-bold">Mercados Deportivos</h2>
+    
+    <!-- Categorías -->
+    <div class="flex gap-4 overflow-x-auto pb-4">
+        <div class="text-center min-w-[70px]">
+            <div class="w-16 h-16 mx-auto rounded-full bg-blue-500 flex items-center justify-center text-3xl">⚽</div>
+            <p class="text-sm mt-1">Fútbol</p>
+        </div>
+        <div class="text-center min-w-[70px]">
+            <div class="w-16 h-16 mx-auto rounded-full bg-orange-500 flex items-center justify-center text-3xl">🏀</div>
+            <p class="text-sm mt-1">NBA</p>
+        </div>
+    </div>
+
+    <!-- Partidos en Vivo -->
+    <h2 class="text-xl font-bold">Destacados en Vivo</h2>
+    <div class="space-y-4">
+        <div class="bg-[#171f33] rounded-2xl p-4">
+            <div class="flex justify-between">
+                <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">PREMIER LEAGUE • VIVO</span>
+            </div>
+            <div class="flex justify-between items-center my-4">
+                <div class="text-center">
+                    <p class="font-bold">Arsenal</p>
+                </div>
+                <div class="text-4xl font-bold">2 - 1</div>
+                <div class="text-center">
+                    <p class="font-bold">Liverpool</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                <div class="bg-[#222a3d] py-2 rounded">1.85</div>
+                <div class="bg-[#222a3d] py-2 rounded">3.40</div>
+                <div class="bg-[#222a3d] py-2 rounded">4.20</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Predicciones Top -->
+    <h2 class="text-xl font-bold">Predicciones Top</h2>
+    <div class="grid gap-4">
+        <div class="bg-[#171f33] rounded-2xl p-4">
+            <p class="font-bold text-green-400">Más de 2.5 Goles — 88% Confianza</p>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
